@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# Copy to cf-setup.sh, fill in credentials, then run before cf push.
+# cf-setup.sh is gitignored — never commit it.
+set -euo pipefail
+
+# ── Credentials (fill these in) ──────────────────────────────────────────────
+ADMIN_USER="admin"
+ADMIN_PASSWORD="CHANGEME"
+
+# Publisher / consumer: add one object per test system identity
+MOCK_USERS='[{"u":"lab-publisher","p":"CHANGEME"},{"u":"lab-consumer","p":"CHANGEME"}]'
+
+# ── CF targets (adjust if your space/org differ) ──────────────────────────────
+APP_NAME="mock-event-broker"
+
+# ── Apply ─────────────────────────────────────────────────────────────────────
+echo "Setting environment variables for ${APP_NAME}..."
+cf set-env "$APP_NAME" ADMIN_USER       "$ADMIN_USER"
+cf set-env "$APP_NAME" ADMIN_PASSWORD   "$ADMIN_PASSWORD"
+cf set-env "$APP_NAME" MOCK_USERS       "$MOCK_USERS"
+
+echo "Restaging ${APP_NAME}..."
+cf restage "$APP_NAME"
+echo "Done."

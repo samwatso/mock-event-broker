@@ -1,0 +1,13 @@
+---
+applications:
+  - name: mock-event-broker
+    memory: 128M
+    disk_quota: 256M
+    instances: 1
+    buildpacks:
+      - nodejs_buildpack
+    command: node src/server.js
+    env:
+      NODE_ENV: production
+      MAX_EVENTS: "1000"
+      MAX_MESSAGES: "500"

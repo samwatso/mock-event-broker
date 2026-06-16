@@ -1,0 +1,26 @@
+{
+  "name": "mock-event-broker",
+  "version": "1.0.0",
+  "description": "HTTP event-broker simulator for SAP Integration Suite lab testing. Deployable to BTP Cloud Foundry.",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node src/server.js",
+    "lab:event-broker": "node src/server.js",
+    "lab:event-broker:test": "newman run postman/mock-event-broker.postman_collection.json --environment postman/mock-event-broker.postman_environment.json --bail",
+    "lab:health": "node -e \"require('./src/services/eventStore').printStats()\"",
+    "lab:event-broker:deploy": "cf push"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^8.5.2",
+    "helmet": "^8.2.0"
+  },
+  "devDependencies": {
+    "newman": "^6.2.1"
+  }
+}
