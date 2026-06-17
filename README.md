@@ -55,6 +55,7 @@ Set `MOCK_USERS` / `ADMIN_*` credentials with `cf set-env` (template in
 - [mock-erp-server](https://github.com/samwatso/mock-erp-server) — a stand-in SAP ECC / S/4HANA (IDoc, SOAP, OData, XI)
 - [mock-sftp-server](https://github.com/samwatso/mock-sftp-server) — a disposable SFTP partner / file drop
 - [mock-mq-broker](https://github.com/samwatso/mock-mq-broker) — JMS / AMQP / MQTT brokers (Artemis + Mosquitto)
+- [mock-ibmmq](https://github.com/samwatso/mock-ibmmq) — a stand-in on-premise IBM MQ queue manager
 
 ## House rules
 
